@@ -8,6 +8,7 @@
 #include "CANMessage.h"
 
 #include <cstring>
+#include <cstddef>
 
 using namespace std;
 
