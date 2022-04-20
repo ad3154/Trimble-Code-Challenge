@@ -115,6 +115,44 @@ bool SuspectParameterNumberParserClass::GetIsSuspectParameterNumberChildOfParame
 		}
 		break;
 
+		case PGN_VEHICLE_DIRECTION_SPEED:
+		{
+			switch (aSPN)
+			{
+				case SuspectParameterNumberClass::SPN_NAVIGATION_BASED_VEHICLE_SPEED:
+				{
+					retVal = true;
+				}
+				break;
+
+				default:
+				{
+
+				}
+				break;
+			}
+		}
+		break;
+
+		case PGN_CRUISE_CONTROL_VEHICLE_SPEED:
+		{
+			switch (aSPN)
+			{
+				case SuspectParameterNumberClass::SPN_WHEEL_BASED_SPEED:
+				{
+					retVal = true;
+				}
+				break;
+
+				default:
+				{
+
+				}
+				break;
+			}
+		}
+		break;
+
 		default:
 		{
 		}
@@ -136,6 +174,12 @@ uint32_t SuspectParameterNumberParserClass::extractRawSuspectParameterNumberData
 	{
 		switch (aSPN)
 		{
+			case SuspectParameterNumberClass::SPN_WHEEL_BASED_SPEED:
+			{
+				retVal = (lpData[1] | (static_cast<uint32_t>(lpData[2]) << 8));
+			}
+			break;
+
 			case SuspectParameterNumberClass::SPN_ACTUAL_INNER_WHEEL_STEERING_ANGLE:
 			{
 				retVal = ((static_cast<uint32_t>(lpData[1]) << 8) | (lpData[0]));
@@ -175,6 +219,12 @@ uint32_t SuspectParameterNumberParserClass::extractRawSuspectParameterNumberData
 			case SuspectParameterNumberClass::SPN_TYPE_OF_STEERING_TRANSMISSION:
 			{
 				retVal = (lpData[5] & 0x0F);
+			}
+			break;
+
+			case SuspectParameterNumberClass::SPN_NAVIGATION_BASED_VEHICLE_SPEED:
+			{
+				retVal = (lpData[2] | (static_cast<uint32_t>(lpData[3]) << 8));
 			}
 			break;
 

@@ -46,6 +46,13 @@ float SuspectParameterNumberClass::GetScaleFactor() const
 		}
 		break;
 
+		case SPN_WHEEL_BASED_SPEED:
+		case SPN_NAVIGATION_BASED_VEHICLE_SPEED:
+		{
+			retVal = 0.00390625f; // 1/256 km/h per bit
+		}
+		break;
+
 		case SPN_STEERABLE_LIFT_AXLE_LOWERING_INHIBIT:
 		case SPN_STEERING_TYPE:
 		case SPN_TYPE_OF_STEERING_FORCES:
